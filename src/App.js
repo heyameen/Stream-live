@@ -1,26 +1,72 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import {withRouter, Redirect} from "react-router-dom";
+import Route from "react-router-dom/Route";
+import youtubeApi from "./APIs/youtube"
+import './sass/App.scss'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//Internal component
+import Home from "./components/Home";
+import VideoList from "./components/VideoList";
+import VideoItem from "./components/VideoItem";
+
+
+class App extends Component {
+
+    state = {
+        data:[],
+        searchTerm:" "
+     };
+
+
+
+
+    onSearch = async (input) => {
+
+
+        const response = await youtubeApi.get('/search', {
+            params: {
+                q: input
+            }
+        });
+
+        this.setState({data: response, searchTerm: input} );
+
+        console.log(this.state.searchTerm);
+
+        this.props.history.push("/videos")
+
+    };
+
+
+
+
+
+
+    componentDidMount() {
+
+    }
+
+
+
+
+    render() {
+
+        return (
+
+                <div>
+
+                    <Route path="/" exact strict component={ () => <Home onFormSubmit={this.onSearch} />} />
+                    <Route path="/videos" render={(props) => <VideoList onSearch={this.state.searchTerm}
+                                                                        videos = {this.state.data}
+                                                                        onFormSubmit = {this.onSearch()}{...props}/>}/>
+                    {/*<Route  path="/videos" component={ () => <VideoList onSearch = {this.state.searchTerm}/>} />*/}
+                    <Route path="/video" component={VideoItem}/>
+
+                </div>
+
+        );
+    }
+
 }
 
-export default App;
+export default withRouter(App);

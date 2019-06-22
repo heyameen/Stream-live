@@ -1,0 +1,37 @@
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+@import "base/base";
+@import "base/typography";
+@import "base/utilities";
+@import "base/animations";
+
+@import "components/searchField";
+@import "components/UI/button";
+@import "components/videoList";
+
+.App{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.Title{
+  text-align: center;
+  margin-bottom: 2rem;
+
+  &__logo{
+    font-weight: 600;
+    font-size: 5rem;
+    color: $color-primary;
+    text-transform: capitalize;
+  }
+
+  &__info{
+
+    font-size: 2rem;
+  }
+}
+

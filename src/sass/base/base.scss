@@ -1,0 +1,23 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+*,
+::before,
+::after{
+  box-sizing:inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body{
+  background-color: $color-cream;
+  background-size:cover;
+  background-repeat: no-repeat;
+  font-family: "Fira Code Medium" !important;
+  max-height: 100vh;
+}
