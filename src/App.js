@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {withRouter, Redirect} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import Route from "react-router-dom/Route";
 import youtubeApi from "./APIs/youtube"
 import './sass/App.scss'
@@ -19,7 +19,6 @@ class App extends Component {
 
 
 
-
     onSearch = async (input) => {
 
 
@@ -29,17 +28,14 @@ class App extends Component {
             }
         });
 
-        this.setState({data: response, searchTerm: input} );
+        this.setState({data: response.data.items, searchTerm: input});
 
         console.log(this.state.searchTerm);
+        console.log(this.state.data);
 
         this.props.history.push("/videos")
 
     };
-
-
-
-
 
 
     componentDidMount() {
@@ -56,9 +52,9 @@ class App extends Component {
                 <div>
 
                     <Route path="/" exact strict component={ () => <Home onFormSubmit={this.onSearch} />} />
-                    <Route path="/videos" render={(props) => <VideoList onSearch={this.state.searchTerm}
-                                                                        videos = {this.state.data}
-                                                                        onFormSubmit = {this.onSearch()}{...props}/>}/>
+                    <Route path="/videos" component={(props) => <VideoList onSearch={this.state.searchTerm}
+                                                                        searchData = {this.state.data}
+                                                                        onFormSubmit = {this.onSearch}{...props}/>}/>
                     {/*<Route  path="/videos" component={ () => <VideoList onSearch = {this.state.searchTerm}/>} />*/}
                     <Route path="/video" component={VideoItem}/>
 

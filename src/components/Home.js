@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {withRouter} from 'react-router-dom';
 import "../sass/App.scss";
 
 
@@ -19,9 +18,8 @@ class Home extends Component {
     onFormSubmit = (e) => {
         e.preventDefault();
 
-        console.log(this.props);
-
         this.props.onFormSubmit(this.state.inputText);
+
     };
 
     render() {
@@ -53,4 +51,4 @@ class Home extends Component {
 
 }
 
-export default withRouter(Home)
+export default Home

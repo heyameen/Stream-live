@@ -1,0 +1,24 @@
+.video-item{
+  display: flex;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  height: min-content;
+  border-radius: 8px;
+
+  &__img {
+    display: block;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  &__thumbnail{
+    padding: 0 20px;
+
+    &-p{
+      margin: 5px 0;
+    }
+  }
+
+}
