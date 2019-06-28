@@ -1,27 +1,39 @@
-import React from "react";
+import React, {Component} from "react";
 import "../sass/App.scss"
 
 
 
-const VideoItem = ({video}) => {
+class VideoItem extends Component  {
 
-    return (
+    state= {
+        selectedVideo: []
+    };
 
-        <div className="video-item">
 
-            <div >
-                <img className="video-item__img" src={video.snippet.thumbnails.medium.url}/>
+
+
+    render()  {
+
+        return (
+
+            <div className="video-item" onClick={this.props.onClick}>
+
+                <div>
+                    <img className="video-item__img" src={this.props.video.snippet.thumbnails.medium.url}/>
+                </div>
+
+                <div className="video-item__thumbnail">
+                    <h2>{this.props.video.snippet.title}</h2>
+                    <h4>sub decsription</h4>
+                    <p className="video-item__thumbnail-p">{this.props.video.snippet.description}</p>
+                </div>
             </div>
+        )
 
-            <div className="video-item__thumbnail">
-                <h2>{video.snippet.title}</h2>
-                <h4>sub decsription</h4>
-                <p className="video-item__thumbnail-p">{video.snippet.description}</p>
-            </div>
-        </div>
-    )
+    }
 
-};
+}
 
 
-export default VideoItem
+
+export default VideoItem;

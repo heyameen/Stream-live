@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import Loader from 'react-loader-spinner'
 import VideoItem from './VideoItem'
 import "../sass/App.scss"
+import {NavLink} from "react-router-dom";
 
 
 class VideoList extends Component {
@@ -10,9 +11,9 @@ class VideoList extends Component {
     state = {
         input: this.props.onSearch,
         data: this.props.searchData,
-        loader: true
+        loader: true,
+        selectedVideo: {}
     };
-
 
 
     onInputChange = (e) => {
@@ -27,32 +28,46 @@ class VideoList extends Component {
 
     };
 
+    onVideoSelect = (i) => {
+       /* this.setState({selectedVideo: i});*/
+        this.props.history.push({
+            pathname:'video',
+            state: i
+        });
+        console.log(i);
+    };
+
+
+
     render() {
 
-        console.log (this.state.data);
         return (
             <div>
                 <div className="videos-header">
 
                     <h3 className="videos-header__logo">Stream Live</h3>
 
-                    <div className="videos-header__form">
-                        <form onSubmit={this.onFormSubmit}>
-                            <input type="text"
-                                   onChange={this.onInputChange}
-                                   value={this.state.input}
-                                   className="videos-header__input"/>
-                        </form>
-                    </div>
+
+                    <form className="videos-header__form" onSubmit={this.onFormSubmit}>
+                        <input type="text"
+                               onChange={this.onInputChange}
+                               value={this.state.input}
+                               className="videos-header__input"/>
+                    </form>
+
 
                 </div>
 
 
-                {this.state.data.length > 0 ? (this.state.data.map(video => {
+                {this.state.data.length > 0 ? (this.state.data.map( video=> {
 
                     return (
 
-                        <VideoItem video={video}/>);
+                            <div onClick={() => {this.onVideoSelect(video)}}>
+                                <VideoItem video={video}/>
+                            </div>
+
+                        );
 
                 })) : <Loader type="ThreeDots" color="#somecolor" height={80} width={80}/>}
 

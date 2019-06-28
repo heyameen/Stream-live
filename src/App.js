@@ -7,7 +7,8 @@ import './sass/App.scss'
 //Internal component
 import Home from "./components/Home";
 import VideoList from "./components/VideoList";
-import VideoItem from "./components/VideoItem";
+import SelectedVideo from "./components/SelectedVideo";
+
 
 
 class App extends Component {
@@ -24,7 +25,7 @@ class App extends Component {
 
         const response = await youtubeApi.get('/search', {
             params: {
-                q: input
+                q: input,
             }
         });
 
@@ -39,7 +40,7 @@ class App extends Component {
 
 
     componentDidMount() {
-
+        youtubeApi.get()
     }
 
 
@@ -56,7 +57,7 @@ class App extends Component {
                                                                         searchData = {this.state.data}
                                                                         onFormSubmit = {this.onSearch}{...props}/>}/>
                     {/*<Route  path="/videos" component={ () => <VideoList onSearch = {this.state.searchTerm}/>} />*/}
-                    <Route path="/video" component={VideoItem}/>
+                    <Route path="/video" component={SelectedVideo}/>
 
                 </div>
 

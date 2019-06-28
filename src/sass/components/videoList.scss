@@ -1,6 +1,7 @@
 .videos-header {
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: $color-primary;
   height: 50px;
   width: 100vw;
@@ -10,11 +11,12 @@
     font-size: 1.5rem;
     color: white;
     padding: 3px;
-    margin-left: 50px;
+    margin-right: 20px;
   }
 
   &__form {
-    margin: 0 auto;
+
+    justify-self: center;
     min-width: 600px;
 
   }
