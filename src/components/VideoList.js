@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import Loader from 'react-loader-spinner'
 import VideoItem from './VideoItem'
 import "../sass/App.scss"
-import {NavLink} from "react-router-dom";
+
 
 
 class VideoList extends Component {

@@ -39,9 +39,7 @@ class App extends Component {
     };
 
 
-    componentDidMount() {
-        youtubeApi.get()
-    }
+
 
 
 
@@ -57,7 +55,7 @@ class App extends Component {
                                                                         searchData = {this.state.data}
                                                                         onFormSubmit = {this.onSearch}{...props}/>}/>
                     {/*<Route  path="/videos" component={ () => <VideoList onSearch = {this.state.searchTerm}/>} />*/}
-                    <Route path="/video" component={SelectedVideo}/>
+                    <Route path="/video" component={(props) => <SelectedVideo onFormSubmit = {this.onSearch} {...props}/>}/>
 
                 </div>
 

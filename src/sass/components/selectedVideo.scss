@@ -1,14 +1,38 @@
 .renderVideo{
-   padding: 0 20px;
+   padding: 0 100px;
+   margin-top: 30px;
+}
+
+.flex {
+   display: flex;
+   flex-wrap: wrap;
+   justify-items: center;
+
 }
 
 .video {
    width: 100%;
-   height: 600px;
+   height: 800px;
+   outline: none;
+   border: none;
 }
 
 .relatedVideo{
-   width: 250px;
-   height: 250px;
-   background-color:black;
+   margin-top: 35px;
+   margin-right: 20px;
+   width: 32%;
+   /*padding: 0 20px;*/
+
+   background-color: white;
+
+
+   &__image{
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+   }
+
+   &__text-block{
+      padding: 20px;
+   }
 }
